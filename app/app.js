@@ -5,15 +5,25 @@
  * Example: Network,GameCore, etc
  */
 define([
-	'game/GameEngine'
-],function(GameEngine){
+	'require',
+	'game/GameEngine',
+	'game/GUIEngine'
+],function(require,GameEngine,GUIEngine){
 
 	'use strict';
 
-	/**
-	 * Game Engine initiation.
-	 * All Game Logic is on GameEngine Class.
-	 */
-	GameEngine.init();
+	require(['domReady'], function (domReady) {
+	  domReady(function () {
+
+	    /**
+			 * Game Engine initiation.
+			 * All Game Logic is on GameEngine Class.
+			 */
+			GameEngine.init();
+			GUIEngine.init();
+
+	  });
+	});
+
 
 });

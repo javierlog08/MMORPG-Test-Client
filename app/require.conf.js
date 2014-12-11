@@ -10,7 +10,9 @@ require.config({
 	// alias libraries paths
 	paths: {
 		'domReady': 'libs/requirejs-domready/domReady',
-		'phaser': 	'libs/phaser/build/phaser.min'
+		'phaser': 	'libs/phaser/build/phaser.min',
+		'bootstrap': 'libs/bootstrap/dist/js/bootstrap',
+		'jquery': 	'libs/jquery/dist/jquery'
 	},
 
 	// angular does not support AMD out of the box, put it in a shim
@@ -21,6 +23,12 @@ require.config({
 	shim: {
 		'phaser': {
 			exports: 'Phaser'
+		},
+		'jquery': {
+			exports: 'jQuery'
+		},
+		'bootstrap': {
+			deps:['jquery']
 		}
 	},
 

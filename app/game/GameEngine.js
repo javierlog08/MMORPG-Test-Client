@@ -23,18 +23,18 @@ define([
 		this.init = function(){
 
 			// -- Init Phasergame instance
-			this.game = new Phaser.Game(800, 600, Phaser.CANVAS, 'phaser-example', { create: create, update: update });
+			this.game = new Phaser.Game(800, 600, Phaser.CANVAS, 'game', { create: create, update: update });
 
 			// -- Put under, initiation for all yours Phaser Components
-			helloPhaserSeed = new HelloPhaserSeed(this.game);
+			//helloPhaserSeed = new HelloPhaserSeed(this.game);
 		}
 
 		function create(){
-			helloPhaserSeed.create();
+			//helloPhaserSeed.create();
 		}
 
 		function update() {
-			helloPhaserSeed.update();
+			//helloPhaserSeed.update();
 		}
 
 	}
