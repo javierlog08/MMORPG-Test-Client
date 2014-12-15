@@ -46,7 +46,7 @@ define(function(require){
 
 		NetworkEngine.send(message);
 
-    return false;
+		return false;
 
 	}
 

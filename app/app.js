@@ -17,12 +17,12 @@ define([
 	require(['domReady'], function (domReady) {
 	  domReady(function () {
 
-	    /**
-			 * Game Engine initiation.
-			 * All Game Logic is on GameEngine Class.
-			 */
-			GameEngine.init();
-			GUIEngine.init();
+		  /**
+		   * Game Engines Initialization.
+		   * All Core is Running here
+		   */
+	    GameEngine.init();
+		  GUIEngine.init();
 		  NetworkEngine.init();
 		  SessionEngine.init();
 

@@ -2,8 +2,8 @@ define(function(require){
 
 	'use strict';
 
-	var Engine    = require('game/Engine');
-	var MessageDictionary  = require('game/network/MessageDictionary');
+	var Engine              = require('game/Engine');
+	var MessageDictionary   = require('game/network/MessageDictionary');
 
 
 	var MessageEngine = new Engine();
