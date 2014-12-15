@@ -1,31 +1,56 @@
-define([
-	'jquery',
-	'libs/jquery-form/jquery.form',
-	'game/SessionEngine'
-],function(jQuery,jqf,SessionEngine){
+define(function(require){
 
-	var Login = function(){
+	'use strict';
 
-		this.show = function()  {
-			jQuery("#game").append('<div id="login" style="width: 30%;height: 30%; position:absolute; z-index: 1; left:0;right:0;top:30%; margin-left:auto;margin-right:auto;" ></div>');
-			jQuery("#login").load("game/ui/login/login.html",function(){
-				$('#login-form').ajaxForm({
+	var jQuery          = require('jquery');
+	var NetworkEngine   = require('game/NetworkEngine');
+	var MessageEngine   = require('game/MessageEngine');
 
-					dataType:  'json',
+	var Login = {};
 
-					success:   function(data) {
-						SessionEngine.login(data);
-					}
+	Login.view = 'game/ui/login/login.html';
 
-				});
-			});
-		}
+	Login.form = null;
 
-		this.hide = function() {
-			jQuery("#login").hide();
-		}
+
+	/**
+	 * Class Construct
+	 */
+	jQuery.get(Login.view, function (ui){
+
+		jQuery("#game").append(ui);
+
+		Login.form = jQuery("#game-login");
+
+		Login.form.submit(onSubmit);
+
+	});
+
+
+	Login.show = function ()
+	{
+		Login.form.show();
 	}
 
-	return new Login();
+	Login.hide = function ()
+	{
+		Login.form.hide();
+	}
+
+	function onSubmit()
+	{
+
+		var data =  Login.form.serializeArray();
+
+		var message = MessageEngine.process("LOGIN_REQUEST", data);
+
+		NetworkEngine.send(message);
+
+    return false;
+
+	}
+
+
+	return Login;
 
 });

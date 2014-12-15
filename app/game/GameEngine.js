@@ -4,51 +4,53 @@
  * This is where you put your Phaser Game Logic
  * Can include game component here and call it.
  */
-define([
-	'game/Engine',
-	'phaser',
-	'game/SessionEngine'
-], function (Engine,Phaser, SessionEngine) {
+define(function(require)
+{
 
 	'use strict';
 
-	var GameEngine = function () {
-
-		this.game;
-
-		/**
-		 * Set Phaser game instance and Game components
-		 */
-		this.init = function () {
+	var Engine            = require("game/Engine");
+	var Phaser            = require("phaser");
+	var SessionEngine     = require("game/SessionEngine");
 
 
-			SessionEngine.onEvent("login", onLogin);
-			SessionEngine.onEvent("sessionTimeOut", onSessionTimeOut);
+	var GameEngine = new Engine();
 
 
-		}
+	GameEngine.game = null;
 
-		function onLogin() {
-			// -- Init Phasergame instance
-			this.game = new Phaser.Game(800, 600, Phaser.CANVAS, 'game', {create: create, update: update});
+	GameEngine.init = function ()
+	{
 
-			// -- Put under, initiation for all yours Phaser Components
-		}
+		SessionEngine.onEvent("login", onLogin);
+		SessionEngine.onEvent("sessionTimeOut", onSessionTimeOut);
 
-		function onSessionTimeOut() {
-			this.game.destroy();
-		}
-
-		function create() {
-		}
-
-		function update() {
-		}
+		// -- Init Phasergame instance
+		GameEngine.game = new Phaser.Game(800, 600, Phaser.CANVAS, 'game', {create: create, update: update});
 
 	}
 
-	GameEngine.prototype = new Engine();
+	function onLogin()
+	{
+		GameEngine.game.stage.backgroundColor = '#0066CC';
+	}
 
-	return new GameEngine();
+	function onSessionTimeOut()
+	{
+
+		GameEngine.game.destroy();
+
+	}
+
+	function create()
+	{
+	}
+
+	function update()
+	{
+	}
+
+
+	return GameEngine;
 
 });

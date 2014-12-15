@@ -3,42 +3,44 @@
  * GUIEngine:
  * Manage all actions to fire and show Game UI on events.
  */
-define([
-	'game/Engine',
-	'game/ui/login/Login',
-	'game/SessionEngine'
-],function(Engine,Login,SessionEngine){
+define(function(require) {
 
 	'use strict';
 
-	var GUIEngine = function() {
-
-		this.init = function(){
-
-			if(SessionEngine.isGuest())
-				Login.show();
+	var Engine            = require('game/Engine');
+	var Login             = require('game/ui/login/Login');
+	var SessionEngine     = require('game/SessionEngine');
 
 
-			SessionEngine.onEvent("login",onLogin);
-			SessionEngine.onEvent("sessionTimeOut",onSessionTimeOut);
+
+	var GUIEngine = new Engine();
 
 
-		}
+	GUIEngine.init = function ()
+	{
 
-
-		function onLogin() {
-			Login.hide();
-		}
-
-		function onSessionTimeOut() {
+		if (SessionEngine.isGuest())
 			Login.show();
-		}
+
+
+		SessionEngine.onEvent("login", onLogin);
+		SessionEngine.onEvent("sessionTimeOut", onSessionTimeOut);
 
 	}
 
-	GUIEngine.prototype = new Engine();
 
-	return new GUIEngine();
+	function onLogin()
+	{
+		Login.hide();
+	}
+
+	function onSessionTimeOut()
+	{
+		Login.show();
+	}
+
+
+	return GUIEngine;
 
 
 });

@@ -1,23 +1,58 @@
 /**
  * Created by Javier on 12/11/2014.
  */
-define(function(){
+define(function(require){
 
-	var NetworkEngine = function() {
+	'use strict';
 
-		this.init = function() {
+	var Engine          = require('game/Engine');
+	var MessageEngine   = require('game/MessageEngine');
 
 
+	var NetworkEngine = new Engine();
 
-		}
 
-		this.send = function(){
+	NetworkEngine.socket = null;
 
-		}
+	NetworkEngine._events = {
+		message: []   // On Server Message Received
+	}
 
+	NetworkEngine.init = function()
+	{
+		this.socket = new WebSocket("ws://echo.websocket.org");
+
+		this.socket.onopen = onConnectionOpen;
+
+		this.socket.onmessage = onServerMessage;
 
 	}
 
-	return new NetworkEngine();
+	NetworkEngine.send = function(message)
+	{
+		this.socket.send(message);
+	}
+
+
+	function onConnectionOpen()
+	{
+		console.log("Socket has been opened!");
+	}
+
+	function onServerMessage(pkt)
+	{
+		try {
+			var  message = MessageEngine.process(pkt.name,pkt.data);
+			NetworkEngine.fireEvent("message",message);
+		} catch(err) {
+			alert(err);
+		}
+
+	}
+
+
+
+
+	return NetworkEngine;
 
 });

@@ -7,8 +7,10 @@
 define([
 	'require',
 	'game/GameEngine',
-	'game/GUIEngine'
-],function(require,GameEngine,GUIEngine){
+	'game/GUIEngine',
+	'game/NetworkEngine',
+	'game/SessionEngine'
+],function(require,GameEngine,GUIEngine,NetworkEngine,SessionEngine){
 
 	'use strict';
 
@@ -21,6 +23,8 @@ define([
 			 */
 			GameEngine.init();
 			GUIEngine.init();
+		  NetworkEngine.init();
+		  SessionEngine.init();
 
 	  });
 	});
