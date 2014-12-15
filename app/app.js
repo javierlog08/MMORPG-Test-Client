@@ -10,23 +10,23 @@ define([
 	'game/GUIEngine',
 	'game/NetworkEngine',
 	'game/SessionEngine'
-],function(require,GameEngine,GUIEngine,NetworkEngine,SessionEngine){
+], function (require, GameEngine, GUIEngine, NetworkEngine, SessionEngine) {
 
 	'use strict';
 
 	require(['domReady'], function (domReady) {
-	  domReady(function () {
+		domReady(function () {
 
-		  /**
-		   * Game Engines Initialization.
-		   * All Core is Running here
-		   */
-	    GameEngine.init();
-		  GUIEngine.init();
-		  NetworkEngine.init();
-		  SessionEngine.init();
+			/**
+			 * Game Engines Initialization.
+			 * All Core is Running here
+			 */
+			GameEngine.init();
+			GUIEngine.init();
+			NetworkEngine.init();
+			SessionEngine.init();
 
-	  });
+		});
 	});
 
 

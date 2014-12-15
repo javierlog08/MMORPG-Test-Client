@@ -20,7 +20,7 @@ define(function(require){
 
 	NetworkEngine.init = function()
 	{
-		this.socket = new WebSocket("ws://echo.websocket.org");
+		this.socket = new WebSocket("ws://localhost:8060");
 
 		this.socket.onopen = onConnectionOpen;
 
@@ -30,6 +30,7 @@ define(function(require){
 
 	NetworkEngine.send = function(message)
 	{
+		message = JSON.stringify(message);
 		this.socket.send(message);
 	}
 

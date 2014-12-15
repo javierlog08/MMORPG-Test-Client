@@ -10,8 +10,11 @@ define(function(require) {
 
 		var form = {};
 
+	;
+
 		for (var i in data)
-			form[data[i]['name']] = data[i]['name'];
+			form[data[i]['name']] = data[i]['value'];
+
 
 		return {
 			id: 1,
