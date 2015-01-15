@@ -23,6 +23,15 @@ define(function () {
 
 	}
 
+	Engine.prototype.addEvents = function(events)
+	{
+
+		if(events instanceof Array)
+			for(e in events)
+				this._events[events[e]] = [];
+
+	}
+
 	Engine.prototype.fireEvent = function (event)
 	{
 
