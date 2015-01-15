@@ -21,8 +21,8 @@ define(function(require){
 	SessionEngine.UUID; //use SessionStorage to set this
 
 	SessionEngine.addEvents([
-		'login',					// OnLogin event
-		'sessionTimeOut'	// OnSessionTime out event
+		'login',          // OnLogin event
+		'sessionTimeOut'  // OnSessionTime out event
 	]);
 
 	SessionEngine.init = function ()
@@ -46,12 +46,10 @@ define(function(require){
 
 	SessionEngine.login = function (Session)
 	{
-
 		if(Session  != null)
 			this.fireEvent("login");
 		else
 			alert("Login incorrercto");
-
 	}
 
 

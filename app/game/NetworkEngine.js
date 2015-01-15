@@ -15,7 +15,7 @@ define(function(require){
 	NetworkEngine.socket = null;
 
 	NetworkEngine.addEvents([
-		'message'		// On Server Message Received
+		'message'  // On Server Message Received
 	]);
 
 	NetworkEngine.init = function()
