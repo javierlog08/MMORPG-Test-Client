@@ -9,8 +9,9 @@ define([
 	'game/GameEngine',
 	'game/GUIEngine',
 	'game/NetworkEngine',
-	'game/SessionEngine'
-], function (require, GameEngine, GUIEngine, NetworkEngine, SessionEngine) {
+	'game/SessionEngine',
+	'game/MessageEngine'
+], function (require, GameEngine, GUIEngine, NetworkEngine, SessionEngine, MessageEngine) {
 
 	'use strict';
 
@@ -25,7 +26,7 @@ define([
 			GUIEngine.init();
 			NetworkEngine.init();
 			SessionEngine.init();
-
+			MessageEngine.init();
 		});
 	});
 

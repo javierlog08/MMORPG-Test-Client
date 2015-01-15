@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mmorpg major="1" minor="0">
+<messages>
+    <message name="LOGIN_REQUEST" msgtype="A">
+        <field name="uuid" required="Y"/>
+        <field name="username" required="Y"/>
+        <field name="password" required="Y"/>
+    </message>
+    <message name="LOGIN_RESPONSE" msgtype="B">
+        <field name="uuid" required="Y"/>
+        <field name="username" required="Y"/>
+        <field name="sessionid" required="Y"/>
+    </message>
+    <message name="LOGOUT_REQUEST" msgtype="C">
+        <field name="uuid" required="Y"/>
+        <field name="username" required="Y"/>
+        <field name="sessionid" required="Y"/>
+    </message>
+</messages>
+</mmorpg>

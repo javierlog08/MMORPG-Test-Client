@@ -12,7 +12,8 @@ require.config({
 		'domReady': 'libs/requirejs-domready/domReady',
 		'phaser': 	'libs/phaser/build/phaser.min',
 		'bootstrap': 'libs/bootstrap/dist/js/bootstrap',
-		'jquery': 	'libs/jquery/dist/jquery'
+		'jquery': 	'libs/jquery/dist/jquery',
+		'xml2json': 	'libs/xml2json/src/xml2json'
 	},
 
 	// angular does not support AMD out of the box, put it in a shim
@@ -28,6 +29,9 @@ require.config({
 			exports: 'jQuery'
 		},
 		'bootstrap': {
+			deps:['jquery']
+		},
+		'xml2json': {
 			deps:['jquery']
 		}
 	},

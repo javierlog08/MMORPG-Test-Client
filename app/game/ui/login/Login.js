@@ -2,9 +2,11 @@ define(function(require){
 
 	'use strict';
 
-	var jQuery          = require('jquery');
-	var NetworkEngine   = require('game/NetworkEngine');
-	var MessageEngine   = require('game/MessageEngine');
+	var jQuery            = require('jquery');
+	var NetworkEngine     = require('game/NetworkEngine');
+	var MessageEngine     = require('game/MessageEngine');
+	var MessageDictionary = require('game/network/MessageDictionary');
+	var SessionEngine			= require('game/SessionEngine');
 
 	var Login = {};
 
@@ -42,7 +44,17 @@ define(function(require){
 
 		var data =  Login.form.serializeArray();
 
-		var message = MessageEngine.process("LOGIN_REQUEST", data);
+		var form = {};
+
+		for (var i in data)
+			form[data[i]['name']] = data[i]['value'];
+
+		var message = MessageEngine.build(MessageDictionary.LOGIN_REQUEST,
+		{
+			username: form.username,
+			password: form.password,
+			uuid:     SessionEngine.UUID
+		});
 
 		NetworkEngine.send(message);
 

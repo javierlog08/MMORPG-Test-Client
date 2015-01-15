@@ -11,14 +11,27 @@ define(function(require){
 
 	MessageEngine.init = function()
 	{
-
+		MessageDictionary.setVersion('1.0');
 	}
 
-	MessageEngine.process = function(name,data)
+	MessageEngine.build = function(msgType,data)
+	{
+		var msg = {};
+
+		msg.name    = MessageDictionary.getName(msgType);
+		msg.msgType = msgType;
+
+		for(i in data)
+			msg[i] = data[i];
+
+		return msg;
+	}
+
+	MessageEngine.process = function(message)
 	{
 
-		if(MessageDictionary[name])
-			return MessageDictionary[name](data);
+		if(MessageDictionary.validate(message))
+			return MessageDictionary.create(message);
 		else
 			throw "Invalid Message Received. \n Is not in the dictionary !";
 

@@ -55,7 +55,7 @@ define(function(require){
 
 	function onMessage(message)
 	{
-		if(message.equals(MessageDictionary.LOGIN_REQUEST))
+		if(message.msgType.equals(MessageDictionary.LOGIN_REQUEST))
 			SessionEngine.login(message);
 	}
 
