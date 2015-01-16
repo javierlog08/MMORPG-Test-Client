@@ -6,7 +6,7 @@ define(function(require){
 	var NetworkEngine     = require('game/NetworkEngine');
 	var MessageEngine     = require('game/MessageEngine');
 	var MessageDictionary = require('game/network/MessageDictionary');
-	var SessionEngine			= require('game/SessionEngine');
+	var SessionEngine     = require('game/SessionEngine');
 
 	var Login = {};
 
