@@ -12,6 +12,6 @@
     "bootstrap": "~3.3.1",
     "jquery-form": "https://github.com/malsup/form.git#~3.46.0",
     "node-uuid": "https://github.com/broofa/node-uuid.git#~1.4.2",
-    "xml2json": "https://github.com/josefvanniekerk/jQuery-xml2json.git"
+    "xml2json": "https://github.com/javierlog08/xml2json.git"
   }
 }

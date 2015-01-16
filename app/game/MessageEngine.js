@@ -4,6 +4,7 @@ define(function(require){
 
 	var Engine              = require('game/Engine');
 	var MessageDictionary   = require('game/network/MessageDictionary');
+	var jQuery              = require('jquery');
 
 
 	var MessageEngine = new Engine();
@@ -14,27 +15,26 @@ define(function(require){
 		MessageDictionary.setVersion('1.0');
 	}
 
-	MessageEngine.build = function(msgType,data)
+	MessageEngine.build = function(msgtype,data)
 	{
 		var msg = {};
 
-		msg.name    = MessageDictionary.getName(msgType);
-		msg.msgType = msgType;
+		msg.name    = MessageDictionary.getName(msgtype);
+		msg.msgtype = msgtype;
 
-		for(i in data)
+		for(var i in data)
 			msg[i] = data[i];
 
 		return msg;
 	}
 
-	MessageEngine.process = function(message)
+	MessageEngine.process = function(pkt)
 	{
-
+		var message = jQuery.parseJSON(pkt.data);
 		if(MessageDictionary.validate(message))
-			return MessageDictionary.create(message);
+			return message;
 		else
-			throw "Invalid Message Received. \n Is not in the dictionary !";
-
+			throw "Invalid Message Received. Is not in the dictionary !";
 	}
 
 	return MessageEngine;

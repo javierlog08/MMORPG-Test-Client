@@ -8,27 +8,27 @@ define(function(require){
 	var MessageDictionary = {};
 
 	MessageDictionary.LOGIN_REQUEST  = 'A';
-	MessageDictionary.LOGOUT_REQUEST = 'B';
+	MessageDictionary.LOGIN_RESPONSE = 'B';
+	MessageDictionary.LOGOUT_REQUEST = 'C';
 
 
 	MessageDictionary.version = {};
 
-	MessageDictionary.setVersion = function(v) {
+	MessageDictionary.setVersion = function(v)
+	{
 		jQuery.get('/MMORPG-Test-Client/app/game/network/dictionary/version/'+v+'/dictionary.xml',function(xml){
-			var data = xml2json.toJson(xml);
-			MessageDictionary.version = data;
-			console.log(JSON.stringify(MessageDictionary.version));
-		})
-
+			MessageDictionary.version = jQuery.xml2json(xml);
+		},'xml')
 
 	}
 
-	MessageDictionary.getName = function(msgType){
-		var messages = this.version.mmorpg.messages.message;
+	MessageDictionary.getName = function(msgtype)
+	{
+		var messages = this.version.messages.message;
 
-		for(i in messages)
+		for(var i in messages)
 		{
-			if(messages[i].msgType = message.msgType)
+			if(messages[i].msgtype = msgtype)
 				return messages[i].name;
 		}
 	}
@@ -37,9 +37,9 @@ define(function(require){
 	{
 		var messages = this.version.messages.message;
 
-		for(i in messages)
+		for(var i in messages)
 		{
-			if(messages[i].name = message.name)
+			if(messages[i].name = message.name && messages[i].msgtype == message.msgtype)
 				return true;
 		}
 
@@ -50,14 +50,14 @@ define(function(require){
 	{
 		var messages = this.version.messages.message;
 
-		for(i in messages)
+		for(var i in messages)
 		{
-			if(messages[i].name = message.name)
+			if(messages[i].name == message.name)
 			{
-				for(var f in messages[i])
+				for(var f in messages[i].field)
 				{
-					var field = messages[i][f];
-					if(field.required == 'Y' && field.value == null && !field.value)
+					var field = messages[i].field[f];
+					if(field.required == 'Y' && !message[field.name])
 						return false
 				}
 			}
@@ -66,8 +66,8 @@ define(function(require){
 		return true;
 	}
 
-	MessageDictionary.validate = function(message
-	){
+	MessageDictionary.validate = function(message)
+	{
 		if(this.exists(message))
 		{
 			if(this.requires(message))

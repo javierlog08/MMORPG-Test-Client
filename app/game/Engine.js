@@ -11,33 +11,32 @@ define(function () {
 
 	var Engine = function ()
 	{
-
 		this._events = {};
-
 	}
 
 	Engine.prototype.onEvent = function (event, handler)
 	{
-
 		this._events[event].push(handler);
-
 	}
 
 	Engine.prototype.addEvents = function(events)
 	{
 
 		if(events instanceof Array)
-			for(e in events)
+			for(var e in events)
 				this._events[events[e]] = [];
 
 	}
 
-	Engine.prototype.fireEvent = function (event)
+	Engine.prototype.fireEvent = function (event,param)
 	{
-
 		for (var e in this._events[event])
-			this._events[event][e]();
-
+		{
+			if(param)
+				this._events[event][e](param);
+			else
+				this._events[event][e]();
+		}
 	}
 
 

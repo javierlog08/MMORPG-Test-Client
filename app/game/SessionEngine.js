@@ -35,7 +35,6 @@ define(function(require){
 		});
 
 		NetworkEngine.onEvent("message",onMessage);
-
 	}
 
 	SessionEngine.isGuest = function ()
@@ -55,7 +54,7 @@ define(function(require){
 
 	function onMessage(message)
 	{
-		if(message.msgType.equals(MessageDictionary.LOGIN_REQUEST))
+		if(message.msgtype == MessageDictionary.LOGIN_RESPONSE)
 			SessionEngine.login(message);
 	}
 

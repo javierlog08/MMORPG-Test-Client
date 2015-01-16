@@ -30,8 +30,7 @@ define(function(require){
 
 	NetworkEngine.send = function(message)
 	{
-		message = JSON.stringify(message);
-		this.socket.send(message);
+		this.socket.send(JSON.stringify(message));
 	}
 
 
@@ -43,12 +42,11 @@ define(function(require){
 	function onServerMessage(pkt)
 	{
 		try {
-			var  message = MessageEngine.process(pkt.name,pkt.data);
+			var  message = MessageEngine.process(pkt);
 			NetworkEngine.fireEvent("message",message);
 		} catch(err) {
 			alert(err);
 		}
-
 	}
 
 

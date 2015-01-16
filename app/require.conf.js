@@ -9,11 +9,11 @@ require.config({
 
 	// alias libraries paths
 	paths: {
-		'domReady': 'libs/requirejs-domready/domReady',
-		'phaser': 	'libs/phaser/build/phaser.min',
+		'domReady':  'libs/requirejs-domready/domReady',
+		'phaser':    'libs/phaser/build/phaser.min',
 		'bootstrap': 'libs/bootstrap/dist/js/bootstrap',
-		'jquery': 	'libs/jquery/dist/jquery',
-		'xml2json': 	'libs/xml2json/src/xml2json'
+		'jquery':    'libs/jquery/dist/jquery',
+		'xml2json':  'libs/xml2json/jquery.xml2json'
 	},
 
 	// angular does not support AMD out of the box, put it in a shim
