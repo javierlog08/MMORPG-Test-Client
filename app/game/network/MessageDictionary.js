@@ -39,7 +39,7 @@ define(function(require){
 
 		for(var i in messages)
 		{
-			if(messages[i].name = message.name && messages[i].msgtype == message.msgtype)
+			if(messages[i].name == message.name && messages[i].msgtype == message.msgtype)
 				return true;
 		}
 
