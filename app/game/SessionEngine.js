@@ -13,7 +13,6 @@ define(function(require){
 	var uuid                = require('libs/node-uuid/uuid');
 	var MessageDictionary   = require('game/network/MessageDictionary');
 
-
 	var SessionEngine = new Engine();
 
 	SessionEngine.session = null;
@@ -42,7 +41,6 @@ define(function(require){
 		return (this.session == null) ? true : false;
 	}
 
-
 	SessionEngine.login = function (Session)
 	{
 		if(Session  != null)
@@ -50,7 +48,6 @@ define(function(require){
 		else
 			alert("Login incorrercto");
 	}
-
 
 	function onMessage(message)
 	{

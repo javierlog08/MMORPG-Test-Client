@@ -41,7 +41,6 @@ define(function(require){
 
 	function onSubmit()
 	{
-
 		var data =  Login.form.serializeArray();
 
 		var form = {};
@@ -59,7 +58,6 @@ define(function(require){
 		NetworkEngine.send(message);
 
 		return false;
-
 	}
 
 

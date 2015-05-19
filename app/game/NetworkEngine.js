@@ -25,14 +25,12 @@ define(function(require){
 		this.socket.onopen = onConnectionOpen;
 
 		this.socket.onmessage = onServerMessage;
-
 	}
 
 	NetworkEngine.send = function(message)
 	{
 		this.socket.send(JSON.stringify(message));
 	}
-
 
 	function onConnectionOpen()
 	{

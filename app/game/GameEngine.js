@@ -21,13 +21,11 @@ define(function(require)
 
 	GameEngine.init = function ()
 	{
-
 		SessionEngine.onEvent("login", onLogin);
 		SessionEngine.onEvent("sessionTimeOut", onSessionTimeOut);
 
 		// -- Init Phasergame instance
 		GameEngine.game = new Phaser.Game(800, 600, Phaser.CANVAS, 'game', {create: create, update: update});
-
 	}
 
 	function onLogin()
@@ -37,9 +35,7 @@ define(function(require)
 
 	function onSessionTimeOut()
 	{
-
 		GameEngine.game.destroy();
-
 	}
 
 	function create()

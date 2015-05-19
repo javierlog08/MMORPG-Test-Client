@@ -18,14 +18,11 @@ define(function(require) {
 
 	GUIEngine.init = function ()
 	{
-
 		if (SessionEngine.isGuest())
 			Login.show();
 
-
 		SessionEngine.onEvent("login", onLogin);
 		SessionEngine.onEvent("sessionTimeOut", onSessionTimeOut);
-
 	}
 
 
